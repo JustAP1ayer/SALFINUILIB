@@ -266,7 +266,7 @@ function Library.Main(Text,keycode)
 	TextBox.Size = UDim2.new(0.959276021, 0, 1, 0)
 	TextBox.Font = Enum.Font.SourceSansBold
 	TextBox.PlaceholderColor3 = Color3.fromRGB(115, 115, 115)
-	TextBox.PlaceholderText = "What do you want to find?"
+	TextBox.PlaceholderText = "Search for the thing you need."
 	TextBox.Text = ""
 	TextBox.TextColor3 = Color3.fromRGB(190, 190, 190)
 	TextBox.TextSize = 14.000
