@@ -28,6 +28,7 @@ local Label = Folder.Label("Your Text")
 -- Creating Buttons
 local Button = Folder.Button("Your Text",function()
 print("Pressed")
+-- Code Here
 end)
 
 -- Creating Toggles
