@@ -44,9 +44,9 @@ end,DefaultValue,isFloat) --isFloat is boolean
 
 
 
-Example
+  Example
 
-```local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/JustAP1ayer/SALFINUILIB/main/SALFINUILIB"))()
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/JustAP1ayer/SALFINUILIB/main/SALFINUILIB"))()
 
 -- Creating Gui
 local MainWindow = Library.Main("345tre","LeftAlt")
