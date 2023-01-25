@@ -1,4 +1,3 @@
---for player
 local TweenService = game:GetService("TweenService")
 local InputService = game:GetService("UserInputService")
 local ms = game.Players.LocalPlayer:GetMouse()
