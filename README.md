@@ -45,7 +45,7 @@ end,DefaultValue,isFloat) --isFloat is boolean
 Example
 
 
-```-- Library Core Loadstring
+-- Library Core Loadstring
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/JustAP1ayer/SALFINUILIB/main/SALFINUILIB"))()
 
 -- Creating Gui
@@ -53,11 +53,6 @@ local MainWindow = Library.Main("Test","LeftAlt")
 
 -- Creating Categories
 local Category = MainWindow.Category("Test","1","Crop","1")
-
-
---[[
-ImageScaleTypes : "Crop" , "Fit" , "Slice" , "Stretch"
-]]
 
 -- Creating Folders
 local Folder = Category.Folder("Test")
