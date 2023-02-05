@@ -1145,6 +1145,137 @@ function Library.Main(Text,keycode)
 				end)
 				return Slider;
 			end
+
+            function InsideFolder.Slider2(Text,min,max,callback,defaultValue,precise)
+
+				local Slider2 = Instance.new("TextLabel")
+				local Slider2Base = Instance.new("Frame")
+				local UICorner = Instance.new("UICorner")
+				local Slider2Progress = Instance.new("Frame")
+				local UICorner_2 = Instance.new("UICorner")
+				local TextLabel = Instance.new("TextLabel")
+				local Slider2Border = Instance.new("UIStroke")
+				local Slider2Corner = Instance.new("UICorner")
+				--Properties:
+
+				Slider2.Name = "Slider2"
+				Slider2.Parent = FoldersComponents
+				Slider2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+				Slider2.BackgroundTransparency = 1
+				Slider2.BorderSizePixel = 0
+				Slider2.Position = UDim2.new(0.1835206, 0, 0.248868778, 0)
+				Slider2.Size = UDim2.new(0, 300, 0, 35)
+				Slider2.Font = Enum.Font.SourceSansBold
+				Slider2.TextColor3 = Color3.fromRGB(200, 200, 200)
+				Slider2.TextSize = 15.000
+				Slider2.TextXAlignment = Enum.TextXAlignment.Left
+				Slider2.Text =  "    " .. Text
+
+				Slider2Corner.Parent = Slider2
+
+				Slider2Border.Parent = Slider2
+				Slider2Border.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+				Slider2Border.LineJoinMode = "Round"
+				Slider2Border.Color = Color3.fromRGB(255,255,255)
+				Slider2Border.Transparency = 0.95
+
+				Slider2Base.Name = "Slider2Base"
+				Slider2Base.Parent = Slider2
+				Slider2Base.AnchorPoint = Vector2.new(0, 0.5)
+				Slider2Base.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+				Slider2Base.BackgroundTransparency = 0.9
+				Slider2Base.BorderSizePixel = 0
+				Slider2Base.Position = UDim2.new(0.49000001, 0, 0.557142854, 0)
+				Slider2Base.Size = UDim2.new(0, 145, 0, 6)
+
+				UICorner.CornerRadius = UDim.new(0, 9999)
+				UICorner.Parent = Slider2Base
+
+				Slider2Progress.Name = "Slider2Progress"
+				Slider2Progress.Parent = Slider2Base
+				Slider2Progress.BackgroundColor3 = Color3.fromRGB(255,255,255)
+				Slider2Progress.BorderSizePixel = 0
+				Slider2Progress.Size = UDim2.new(0, 0, 1, 0)
+				Slider2Progress.BackgroundTransparency = 0.85
+
+				UICorner_2.CornerRadius = UDim.new(0, 9999)
+				UICorner_2.Parent = Slider2Progress
+
+				TextLabel.Parent = Slider2Progress
+				TextLabel.BackgroundColor3 = Color3.fromRGB(200, 200, 200)
+				TextLabel.BackgroundTransparency = 1.000
+				TextLabel.BorderSizePixel = 0
+				TextLabel.Position = UDim2.new(0.5, 0, -2, 0)
+				TextLabel.Size = UDim2.new(0, 37, 0, 11)
+				TextLabel.Font = Enum.Font.SourceSansBold
+				TextLabel.Text = defaultValue
+				TextLabel.TextColor3 = Color3.fromRGB(200, 200, 200)
+				TextLabel.TextSize = 13.000
+
+
+				local Sliding,Dragging = false
+				local RealValue = defaultValue
+				local value
+				local function move(Pressed)
+					Sliding = true;
+					local pos = UDim2.new(math.clamp((Pressed.Position.X - Slider2Base.AbsolutePosition.X) / Slider2Base.AbsoluteSize.X, 0, 1), 0, 1, 0)
+					local size = UDim2.new(math.clamp((Pressed.Position.X - Slider2Base.AbsolutePosition.X) / Slider2Base.AbsoluteSize.X, 0, 1), 0, 1, 0)
+					Slider2Progress:TweenSize(size, "Out", "Sine", 0.1, true,nil);
+					RealValue = (((pos.X.Scale * max) / max) * (max - min) + min)
+					value = (precise and string.format("%.1f", tostring(RealValue))) or (math.floor(RealValue))
+					TextLabel.Text = tostring(value)
+					callback(value)
+				end
+				Slider2.InputBegan:Connect(function(Pressed)
+					if Pressed.UserInputType == Enum.UserInputType.MouseButton1 then
+						Dragging = true
+						Sliding = false 
+						TweenService:Create(Slider2Border,TweenInfo.new(0.3),{Transparency = 0.85}):Play()
+						TweenService:Create(Slider2Progress,TweenInfo.new(0.3),{BackgroundTransparency = 0}):Play()
+						TweenService:Create(Slider2Progress,TweenInfo.new(0.3),{BackgroundColor3 = Color3.fromRGB(37, 150, 255)}):Play()
+						TweenService:Create(TextLabel,TweenInfo.new(0.3),{TextColor3 = Color3.fromRGB(255,255,255)}):Play()
+						move(Pressed)
+					end
+				end)
+
+				Slider2.InputEnded:Connect(function(Pressed)
+					if Pressed.UserInputType == Enum.UserInputType.MouseButton1 then
+						Dragging = false
+						Sliding = false
+						TweenService:Create(TextLabel,TweenInfo.new(0.3),{TextColor3 = Color3.fromRGB(200,200,200)}):Play()
+						TweenService:Create(Slider2Border,TweenInfo.new(0.3),{Transparency = 0.95}):Play()
+						TweenService:Create(Slider2Progress,TweenInfo.new(0.3),{BackgroundTransparency = 0.85}):Play()
+						TweenService:Create(Slider2Progress,TweenInfo.new(0.3),{BackgroundColor3 = Color3.fromRGB(255,255,255)}):Play()
+						move(Pressed)
+					end
+				end)
+
+				game:GetService("UserInputService").InputChanged:Connect(function(Pressed)
+					if Dragging and Pressed.UserInputType == Enum.UserInputType.MouseMovement then
+						move(Pressed)
+					end
+				end)
+
+				Slider2.MouseEnter:Connect(function()
+					if not Dragging then
+						TweenService:Create(TextLabel,TweenInfo.new(0.3),{TextColor3 = Color3.fromRGB(255,255,255)}):Play()
+						TweenService:Create(Slider2Border,TweenInfo.new(0.3),{Transparency = 0.9}):Play()
+						TweenService:Create(Slider2Progress,TweenInfo.new(0.3),{BackgroundTransparency = 0}):Play()
+						TweenService:Create(Slider2Progress,TweenInfo.new(0.3),{BackgroundColor3 = Color3.fromRGB(37, 150, 255)}):Play()
+						TweenService:Create(Slider2,TweenInfo.new(0.3),{TextColor3 = Color3.fromRGB(255,255,255)}):Play()
+					end
+				end)
+				Slider2.MouseLeave:Connect(function()
+					if not Dragging then
+						TweenService:Create(TextLabel,TweenInfo.new(0.3),{TextColor3 = Color3.fromRGB(200,200,200)}):Play()
+						TweenService:Create(Slider2Border,TweenInfo.new(0.3),{Transparency = 0.95}):Play()
+						TweenService:Create(Slider2,TweenInfo.new(0.3),{TextColor3 = Color3.fromRGB(200,200,200)}):Play()
+						TweenService:Create(Slider2Progress,TweenInfo.new(0.3),{BackgroundTransparency = 0.85}):Play()
+						TweenService:Create(Slider2Progress,TweenInfo.new(0.3),{BackgroundColor3 = Color3.fromRGB(255,255,255)}):Play()
+					end
+				end)
+				return Slider2;
+			end
 			function InsideFolder.TextBox(placeholder,callback)
 				local TextBox = Instance.new("TextBox")
 				local UICorner = Instance.new("UICorner")
