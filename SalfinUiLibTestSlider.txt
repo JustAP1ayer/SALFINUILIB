@@ -1169,7 +1169,7 @@ function Library.Main(Text,keycode)
 				Slider2.TextColor3 = Color3.fromRGB(200, 200, 200)
 				Slider2.TextSize = 15.000
 				Slider2.TextXAlignment = Enum.TextXAlignment.Left
-				Slider.Text =  "    " .. Text
+				Slider2.Text =  "    " .. Text
 
 				Slider2Corner.Parent = Slider2
 
