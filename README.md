@@ -40,12 +40,14 @@ end,DefaultBoolValue)
 local Slider = Folder.Slider("Your Text",min,max,function(value)
 print(value)
 end,DefaultValue,isFloat) --isFloat is boolean
+```
+
 
 
 Example
 
 
--- Library Core Loadstring
+```-- Library Core Loadstring
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/JustAP1ayer/SALFINUILIB/main/SALFINUILIB"))()
 
 -- Creating Gui
@@ -82,3 +84,5 @@ end,true)
 local Slider = Folder.Slider("walkspeed",1,200,function(value)
     game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = value
 end,16,isFloat) --isFloat is boolean
+```
+
