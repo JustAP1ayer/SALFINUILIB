@@ -1218,8 +1218,8 @@ function Library.Main(Text,keycode)
 				local value
 				local function move(Pressed)
 					Sliding = true;
-					local pos = UDim2.new(math.clamp((Pressed.Position.X - Slider2Base.AbsolutePosition.X) / SliderBase.AbsoluteSize.X, 0, 1), 0, 1, 0)
-					local size = UDim2.new(math.clamp((Pressed.Position.X - Slider2Base.AbsolutePosition.X) / SliderBase.AbsoluteSize.X, 0, 1), 0, 1, 0)
+					local pos = UDim2.new(math.clamp((Pressed.Position.X - Slider2Base.AbsolutePosition.X) / Slider2Base.AbsoluteSize.X, 0, 1), 0, 1, 0)
+					local size = UDim2.new(math.clamp((Pressed.Position.X - Slider2Base.AbsolutePosition.X) / Slider2Base.AbsoluteSize.X, 0, 1), 0, 1, 0)
 					Slider2Progress:TweenSize(size, "Out", "Sine", 0.1, true,nil);
 					RealValue = (((pos.X.Scale * max) / max) * (max - min) + min)
 					value = (precise and string.format("%.1f", tostring(RealValue))) or (math.floor(RealValue))
