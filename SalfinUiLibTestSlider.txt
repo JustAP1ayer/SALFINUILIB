@@ -1196,7 +1196,7 @@ function Library.Main(Text,keycode)
 				Slider2Progress.BackgroundColor3 = Color3.fromRGB(255,255,255)
 				Slider2Progress.BorderSizePixel = 0
 				Slider2Progress.Size = UDim2.new(0, 0, 1, 0)
-				SliderP2rogress.BackgroundTransparency = 0.85
+				Slider2Progress.BackgroundTransparency = 0.85
 
 				UICorner_2.CornerRadius = UDim.new(0, 9999)
 				UICorner_2.Parent = Slider2Progress
