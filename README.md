@@ -3,6 +3,8 @@
 
 # Documents
 
+Slider and Slider2 is different as Slider works after you finish sliding but Slider2 is a calling script, which it would always update when sliding
+
 ```-- Library Core Loadstring
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/JustAP1ayer/SALFINUILIB/main/SALFINUILIB"))()
 
@@ -38,6 +40,11 @@ end,DefaultBoolValue)
 
 -- Creating Sliders
 local Slider = Folder.Slider("Your Text",min,max,function(value)
+print(value)
+end,DefaultValue,isFloat) --isFloat is boolean
+
+-- Creating Slider2s
+local Slider2 = Folder.Slider2("Your Text",min,max,function(value)
 print(value)
 end,DefaultValue,isFloat) --isFloat is boolean
 ```
@@ -82,6 +89,11 @@ end,true)
 
 -- Creating Sliders
 local Slider = Folder.Slider("walkspeed",1,200,function(value)
+    game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = value
+end,16,isFloat) --isFloat is boolean
+
+-- Creating Slider2s
+local Slider2 = Folder.Slider2("walkspeed",1,200,function(value)
     game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = value
 end,16,isFloat) --isFloat is boolean
 ```
