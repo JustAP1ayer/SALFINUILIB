@@ -673,7 +673,7 @@ function Library.Main(Text,keycode)
 		FolderImage.BorderSizePixel = 0
 		FolderImage.Size = UDim2.new(1, 0, 1, 0)
 		FolderImage.ScaleType = Enum.ScaleType[ScaleType] or Enum.ScaleType.Crop
-		FolderImage.Image =  "https://www.roblox.com/asset/?id=" .. imageId
+		FolderImage.Image =  "rbxassetid://" .. imageId
 		FolderImage.ImageTransparency = imgTransparency or 0
 
 		FolderSwapButton.Name = "FolderSwapButton"
