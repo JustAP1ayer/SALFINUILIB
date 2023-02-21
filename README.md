@@ -49,7 +49,7 @@ print(value)
 end,DefaultValue,isFloat) --isFloat is boolean
 
 -- Creating Dropdowns
-local Dropdown = Folder.Dropdown("Placeholder for dropdown", false)
+local Dropdown = Folder.Dropdown("Placeholder for dropdown", false) -- the boolean is used to choose multiple choices or not
 Dropdown.Choice("text", function()
 -- Put a Choice Here
 -- code
