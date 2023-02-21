@@ -47,6 +47,13 @@ end,DefaultValue,isFloat) --isFloat is boolean
 local Slider2 = Folder.Slider2("Your Text",min,max,function(value)
 print(value)
 end,DefaultValue,isFloat) --isFloat is boolean
+
+-- Creating Dropdowns
+local Dropdown = Folder.Dropdown("Placeholder for dropdown", false)
+Dropdown.Choice("text", function()
+-- Put a Choice Here
+-- code
+end, false)
 ```
 
 
@@ -96,5 +103,16 @@ end,16,isFloat) --isFloat is boolean
 local Slider2 = Folder.Slider2("walkspeed",1,200,function(value)
     game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = value
 end,16,isFloat) --isFloat is boolean
+
+-- Creating Dropdowns
+
+local Dropdown = Folder.Dropdown("What Choice did you choose", false)
+Dropdown.Choice("Choice1", function()
+  print("Choice1 was selected.")
+end, false)
+  Dropdown.Choice("Choice2", function()
+  print("Choice2 was selected.")
+end, false)
+
 ```
 
